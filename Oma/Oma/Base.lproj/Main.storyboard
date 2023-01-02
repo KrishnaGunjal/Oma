@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="46C-JW-I80">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -62,10 +62,69 @@
             </objects>
             <point key="canvasLocation" x="138" y="4"/>
         </scene>
+        <!--Speech To Text View Controller-->
+        <scene sceneID="x7b-7M-o4g">
+            <objects>
+                <viewController storyboardIdentifier="SpeechToTextViewController" id="46C-JW-I80" customClass="SpeechToTextViewController" customModule="Oma" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ak1-1C-yYd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How can I help you?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b1-5O-Lcc">
+                                <rect key="frame" x="15" y="89" width="363" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v0J-7N-0vX">
+                                <rect key="frame" x="15" y="184" width="363" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="PeB-iV-0w2"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8u-om-pbA">
+                                <rect key="frame" x="125" y="733" width="143" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start Recording"/>
+                                <connections>
+                                    <action selector="microphoneButtonTapped:" destination="46C-JW-I80" eventType="touchUpInside" id="zyZ-qi-Eqb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wdg-QZ-9FD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="v0J-7N-0vX" firstAttribute="trailing" secondItem="6b1-5O-Lcc" secondAttribute="trailing" id="1L0-iB-LiU"/>
+                            <constraint firstItem="6b1-5O-Lcc" firstAttribute="leading" secondItem="Wdg-QZ-9FD" secondAttribute="leading" constant="15" id="M8h-DR-LZh"/>
+                            <constraint firstItem="6b1-5O-Lcc" firstAttribute="top" secondItem="Wdg-QZ-9FD" secondAttribute="top" constant="30" id="UWo-Ew-W2Y"/>
+                            <constraint firstItem="v0J-7N-0vX" firstAttribute="top" secondItem="6b1-5O-Lcc" secondAttribute="bottom" constant="71" id="bgq-Pr-BV0"/>
+                            <constraint firstItem="X8u-om-pbA" firstAttribute="centerX" secondItem="v0J-7N-0vX" secondAttribute="centerX" id="gqW-eE-fBW"/>
+                            <constraint firstItem="6b1-5O-Lcc" firstAttribute="centerX" secondItem="ak1-1C-yYd" secondAttribute="centerX" id="oAP-RW-cNU"/>
+                            <constraint firstItem="Wdg-QZ-9FD" firstAttribute="trailing" secondItem="6b1-5O-Lcc" secondAttribute="trailing" constant="15" id="oLS-Lu-cGs"/>
+                            <constraint firstItem="v0J-7N-0vX" firstAttribute="leading" secondItem="6b1-5O-Lcc" secondAttribute="leading" id="tS4-aS-EZ4"/>
+                            <constraint firstItem="Wdg-QZ-9FD" firstAttribute="bottom" secondItem="X8u-om-pbA" secondAttribute="bottom" constant="50" id="uF6-Hs-5tD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="X8u-om-pbA" id="93r-I1-gK4"/>
+                        <outlet property="textView" destination="v0J-7N-0vX" id="6AA-4a-3fv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZF-hD-Id2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1019" y="-4"/>
+        </scene>
     </scenes>
     <resources>
         <image name="pause_icon" width="256" height="256"/>
         <image name="play_icon" width="600" height="420"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
