@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Intents
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,6 +19,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+            if let _ = userActivity.interaction?.intent as? INPlayMediaIntent{
+
+                if let windowScene = scene as? UIWindowScene {
+                    self.window = UIWindow(windowScene: windowScene)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "SiriViewController") as! SiriViewController
+                    self.window!.rootViewController = initialViewController
+                    self.window!.makeKeyAndVisible()
+                    initialViewController.showMessage()
+                }
+            }
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
